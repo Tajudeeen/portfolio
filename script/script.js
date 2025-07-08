@@ -14,7 +14,7 @@ function PageTransitions() {
       this.className += " active-btn";
     });
   }
- allSections.addEventListener("click", (e) => {
+  allSections.addEventListener("click", (e) => {
     const id = e.target.dataset.id;
     if (id) {
       // remove active from other buttons
@@ -31,6 +31,13 @@ function PageTransitions() {
       const element = document.getElementById(id);
       element.classList.add("active");
     }
+  });
+
+  // toggle theme
+  const themeBtn = document.querySelector(".theme-btn");
+  themeBtn.addEventListener("click", () => {
+    let element = document.body;
+    element.classList.toggle("light-mode");
   });
 }
 PageTransitions();

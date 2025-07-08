@@ -23,6 +23,20 @@
   --box-shadow-1: 0 2px 15px rgba(0, 0, 0, 0.3);
 }
 
+.light-mode {
+  --primary-color: #ffffff;
+  --secondary-color: #1c385f;
+  --white-color: #000;
+  --black-color: #000;
+  --grey-color1: #000;
+  --grey-color2: #000;
+  --grey-color3: #b2becd;
+  --grey-color4: #6c7983;
+  --grey-color5: #454e56;
+  --grey-color6: #b2becd;
+  --grey-color7: #12181b;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--primary-color);
@@ -95,7 +109,7 @@ section {
 
 // controls
 .controls {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 3%;
   transform: translateY(-50%);
@@ -129,12 +143,35 @@ section {
   }
 }
 
+.theme-btn {
+  top: 5%;
+  right: 3%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--grey-color4);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+  &:active {
+    transform: translateY(-5px);
+  }
+  i {
+    font-size: 1.5rem;
+    color: var(--grey-color2);
+    pointer-events: none;
+  }
+}
+
 // header content
 .header-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  height: 100%;
+  min-height: 100vh;
   .left-header {
     display: flex;
     align-items: center;
@@ -170,7 +207,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 18rem;
+    padding-right: 16rem;
     .name {
       font-size: 3rem;
       span {
@@ -397,7 +434,7 @@ section {
       flex-direction: column;
       opacity: 0;
       transform: scale(0);
-      transition: all .4s ease-in-out;
+      transition: all 0.4s ease-in-out;
       h3 {
         font-size: 1.3rem;
         color: var(--white-color);
@@ -436,30 +473,106 @@ section {
 }
 
 .portfolio-item:hover .hover-item {
-  opacity: .85;
+  opacity: 0.85;
   transform: scale(1);
 }
 
-.blogs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
-  .blog {
-    position: relative;
-    background-color: var(--grey-color5);
-    border-radius: 5px;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-    transition: all .4s ease-in-out;
-    &:hover {
-      box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-      transform: translateY(-5px);
-      transition: all .4s ease-in-out;
-      img {
-        filter: grayscale(0);
-        transform: scale(10%);
-        box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.8);
+// contact
+.contact-content {
+  display: flex;
+  padding-top: 3.5rem;
+  gap: 3rem;
+  .left-contact {
+    flex: 2;
+    margin-left: 3rem;
+
+    h4 {
+      text-transform: uppercase;
+      margin-top: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      margin: 1rem 0;
+      line-height: 2rem;
+    }
+
+    .contact-info {
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+          margin: 0.3rem 0;
+        }
+        .icon {
+          display: grid;
+          grid-template-columns: 40px 1fr;
+          i {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+          }
+        }
       }
+    }
+    .contact-icons {
+      display: flex;
+      margin-top: 2rem;
+      a {
+        display: flex;
+        align-items: center;
+        color: var(--white-color);
+        background-color: var(--grey-color5);
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 0 0.4rem;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          background-color: var(--secondary-color);
+          i {
+            color: var(--primary-color);
+          }
+        }
+        i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .right-contact {
+    flex: 3;
+    .input-control {
+      margin: 1.5rem 0;
+      input,
+      textarea {
+        border-radius: 30px;
+        font-weight: inherit;
+        font-size: inherit;
+        padding: 0.8rem 1.1rem;
+        outline: none;
+        border: none;
+        background-color: var(--grey-color5);
+        width: 100%;
+        color: var(--white-color);
+        resize: none;
+      }
+    }
+    .input-control1 {
+      display: flex;
+      :last-child {
+        margin-left: 1.5rem;
+      }
+    }
+    .submit-btn {
+      display: flex;
+      justify-content: flex-start;
     }
   }
 }
@@ -538,3 +651,7 @@ section {
     }
   }
 }
+
+
+// media queries
+@import './media'
